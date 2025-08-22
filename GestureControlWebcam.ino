@@ -37,7 +37,7 @@ void loop() {
   if (Serial.available()) {
     String cmd = Serial.readStringUntil('\n');
 
-    // Left hand LEDs: send 5-character string like "10101" (Thumb→Pinky)
+    // Right hand LEDs: send 5-character string like "10101" (Thumb→Pinky)
     if (cmd.startsWith("L")) {
       if (cmd.length() >= 6) {
         bool t = cmd[1] == '1';
@@ -48,7 +48,7 @@ void loop() {
         setFingerLEDs(t, i, m, r, p);
       }
     }
-    // Right hand buzzer
+    // Left hand buzzer
     else if (cmd.startsWith("B")) {
       int state = cmd.substring(1).toInt();
       setBuzzer(state);
